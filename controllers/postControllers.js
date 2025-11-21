@@ -96,3 +96,12 @@ export const getallPostfromcreatedBY = async(req ,res)=>{
    }
 
   }
+
+export const getAllPosts = async (req, res) => {
+  try {
+    const posts = await Post.find().sort({ createdAt: -1 }).populate("createdBY", "name email");
+    res.status(200).json({ message: "All posts fetched successfully", posts });
+  } catch (error) {
+    return res.status(500).json({ message: "Internal error", error: error.message });
+  }
+};

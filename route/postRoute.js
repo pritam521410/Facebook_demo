@@ -1,4 +1,4 @@
-import {createPost  ,likePost ,getallPostfromcreatedBY } from "../controllers/postControllers.js"
+import {createPost  ,likePost ,getallPostfromcreatedBY, getAllPosts } from "../controllers/postControllers.js"
 
 import { isAuthenticated } from "../middleware/auth.js";
 
@@ -10,4 +10,5 @@ route.post("/createPost" , isAuthenticated ,createPost)
 
 route.put("/likePost" ,isAuthenticated, likePost)
 route.get("/getallPostfromcreatedBY/:createdBY" , isAuthenticated, getallPostfromcreatedBY);
+route.get("/getAllPosts", isAuthenticated, getAllPosts);
 export default route;
